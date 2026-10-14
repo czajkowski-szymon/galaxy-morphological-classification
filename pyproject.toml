@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "galaxy-morphology"
+version = "1.0.0"
+description = "Galaxy morphology from Galaxy Zoo 2 vote fractions with a Dirichlet-Multinomial loss"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Szymon Czajkowski" }]
+dependencies = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "timm>=1.0",
+    "datasets>=2.18",
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scikit-learn>=1.4",
+    "matplotlib>=3.8",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["ruff", "ipykernel", "ipywidgets"]
+
+[tool.setuptools]
+packages = ["src", "scripts"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-include = ["*.ipynb"]
+extend-exclude = ["notebooks/experiments.ipynb", "notes"]
+
+[tool.ruff.format]
+# notebooks keep their own layout
+exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src", "scripts"]
+
+[tool.ruff.lint.per-file-ignores]
+# notebooks add the repo root to sys.path before importing src
+"*.ipynb" = ["E402"]

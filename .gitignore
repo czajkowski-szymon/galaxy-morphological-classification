@@ -1,0 +1,25 @@
+# data, checkpoints, environment
+data/
+models/
+.venv/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.ruff_cache/
+
+# jupyter
+.ipynb_checkpoints/
+*.bak
+
+# results
+results/*.json
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# working notes
+notes/
